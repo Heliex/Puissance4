@@ -13,18 +13,12 @@ namespace Puissance4_FrontEnd.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Stats()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Statistiques";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
