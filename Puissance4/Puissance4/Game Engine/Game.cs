@@ -15,6 +15,7 @@ namespace Puissance4.Game_Engine
         private bool canPlay;
         private bool isLocalGame=true;
         public event EventHandler<GameOverEvent> gameOverEvent;
+        public event EventHandler<RefreshEvent> refreshEvent;
 
         public Game(int width=7, int height=6)
         {
@@ -45,7 +46,20 @@ namespace Puissance4.Game_Engine
 
         public void gameOver()
         {
+            
+        }
 
+        protected virtual void onRaiseGameOverEvent (GameOverEvent e)
+        {
+            EventHandler<GameOverEvent> handler = gameOverEvent;
+
+            if (handler != null) handler(this,e);
+        }
+
+        protected virtual void onRaiseRefreshEvent(RefreshEvent e)
+        {
+            EventHandler<RefreshEvent> handler = refreshEvent;
+            if (handler != null) handler(this, e);
         }
     }
 }

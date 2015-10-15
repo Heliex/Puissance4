@@ -9,10 +9,12 @@ namespace Puissance4.Game_Engine
     class Board
     {
         private Case[,] gameboard;
-        private static sealed bool DiagonaleHGVersBD = false;
-        private static sealed bool DiagonaleBGVersHD = true;
-        private static sealed bool DroiteVerticale = false;
-        private static sealed bool DroiteHorizontale = true;
+        private static readonly bool DiagonaleHGVersBD = false;
+        private static readonly bool DiagonaleBGVersHD = true;
+        private static readonly bool DroiteVerticale = false;
+        private static readonly bool DroiteHorizontale = true;
+
+        private int noPlaceLeft;
 
         private int countDiagonaleLine = 0;
         private int countStraightLine = 0;
@@ -22,6 +24,7 @@ namespace Puissance4.Game_Engine
             for (int i = 0; i < x; i++)
                 for (int j = 0; j < y; j++)
                     gameboard[i, j] = new Case(i, j);
+            noPlaceLeft = x * y;
         }
 
         public void init()
@@ -150,7 +153,22 @@ namespace Puissance4.Game_Engine
             if (!isInArray(c)) return false;
             if (!c.isEmpty() || !gameboard[c.x, c.y].isEmpty()) return false;
 
+            if (noPlaceLeft-- <= 0) return false;
+
             return true;
+        }
+
+        public String toString()
+        {
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < gameboard.GetLength(0); i++)
+            {
+                for (int j = 0; j < gameboard.GetLength(1); j++)
+                    s.Append(gameboard[i, j].isEmpty() ? "0" : "1");
+                s.AppendLine();
+            }
+            s.AppendLine();
+            return s.ToString();
         }
     }
 }
