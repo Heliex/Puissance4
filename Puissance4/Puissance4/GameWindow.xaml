@@ -3,7 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="GameWindow" Height="800" Width="1200">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="675" Margin="10,84,0,0" VerticalAlignment="Top" Width="1172"/>
+        <Grid HorizontalAlignment="Center" Height="650" Margin="0,84,0,0" VerticalAlignment="Top" Width="1120">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
         <Label Content="Player 1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontSize="28" Foreground="White" Background="Blue" Width="130"/>
         <Label Content="IA" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontSize="28" Foreground="White" Background="Red" Width="130"/>
         <Button Content="Gros lâche" HorizontalAlignment="Left" Margin="168,10,0,0" VerticalAlignment="Top" Width="75"/>
