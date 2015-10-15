@@ -66,6 +66,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Game Engine\Board.cs" />
+    <Compile Include="Game Engine\Case.cs" />
+    <Compile Include="Game Engine\Game.cs" />
+    <Compile Include="Game Engine\GameOverEvent.cs" />
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
