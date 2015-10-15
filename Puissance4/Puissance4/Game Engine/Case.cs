@@ -8,9 +8,9 @@ namespace Puissance4.Game_Engine
 {
     class Case
     {
-        private int x { get; set; }
-        private int y { get; set; }
-        private bool? color;
+        public int x { get; set; }
+        public int y { get; set; }
+        public bool? color { get; set; }
 
         public Case(int x, int y)
         {
@@ -31,6 +31,12 @@ namespace Puissance4.Game_Engine
             this.color = color;
             if (this.color == null) return false;
             
+            return true;
+        }
+
+        public bool isSameColor(Case c)
+        {
+            if (c.color == null || this.color != c.color) return false;
             return true;
         }
     }

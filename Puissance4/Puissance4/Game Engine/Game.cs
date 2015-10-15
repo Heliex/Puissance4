@@ -13,22 +13,34 @@ namespace Puissance4.Game_Engine
         private Board plateau;
         private bool isYourTurn;
         private bool canPlay;
-        private bool isLocalGame;
+        private bool isLocalGame=true;
         public event EventHandler<GameOverEvent> gameOverEvent;
 
         public Game(int width=7, int height=6)
         {
-            
+            NB_CASE_WIDTH = width;
+            NB_CASE_HEIGHT = height;
         }
 
         public void init()
         {
-
+            plateau = new Board(NB_CASE_WIDTH, NB_CASE_HEIGHT);
+            
+            if (isLocalGame)
+            {
+                isYourTurn = true;
+                canPlay = true;
+            }
+            else
+            {
+                
+            }
         }
 
-        public void newPlay()
+        public void newPlay(bool? local=null)
         {
-
+            if (local != null) isLocalGame = (bool)local;
+            init();
         }
 
         public void gameOver()
