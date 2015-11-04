@@ -21,23 +21,24 @@ namespace Puissance4.Game_Engine
 
         public bool isEmpty()
         {
-            if (color == null)
+            if (color != null)
                 return false;
             return true;
         }
 
         public bool placePiece(bool color)
         {
-            this.color = color;
-            if (this.color == null) return false;
+            if (this.color == null) this.color = color; //Si la case est vide, on met un pion
+            else return false;                          //Sinon, elle est déjà occupée
+            if (this.color == null) return false;       //Si après avoir placé notre pion, la case est toujours vide, il y a une erreur
             
-            return true;
+            return true;                                //Sinon le coup s'est bien passé
         }
 
         public bool isSameColor(Case c)
         {
-            if (c.color == null || this.color != c.color) return false;
-            return true;
+            if (color == c.color) return true;
+            return false;
         }
     }
 }

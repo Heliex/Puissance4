@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
-    class Game
+    public class Game
     {
         private static int NB_CASE_WIDTH = 7;
         private static int NB_CASE_HEIGHT = 6;
@@ -16,6 +16,8 @@ namespace Puissance4.Game_Engine
         private bool isLocalGame=true;
         public event EventHandler<GameOverEvent> gameOverEvent;
         public event EventHandler<RefreshEvent> refreshEvent;
+        public int turn { get; set; }
+        
 
         public Game(int width=7, int height=6)
         {
@@ -34,8 +36,31 @@ namespace Puissance4.Game_Engine
             }
             else
             {
-                
+                Random r = new Random(100);
+                if (r.Next() % 2 > 0)
+                    canPlay = false;
+                else canPlay = true;
             }
+        }
+
+        public bool makeAMove(int x, int y)
+        {
+            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
+                return false;
+            
+            turn++;
+            
+            //isYourTurn = false;
+            //canPlay = false;
+            return true;
+        }
+
+        public bool checkLine(int x, int y)
+        {
+            if (plateau.verifierLigne(plateau.recupererCase(x,y)))
+                return true;
+
+            return false;
         }
 
         public void newPlay(bool? local=null)

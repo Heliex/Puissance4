@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Puissance4.Game_Engine
 {
-    class RefreshEvent
+    public class RefreshEvent
     {
     }
 }
