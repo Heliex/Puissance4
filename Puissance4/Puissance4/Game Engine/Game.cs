@@ -17,7 +17,6 @@ namespace Puissance4.Game_Engine
         public event EventHandler<GameOverEvent> gameOverEvent;
         public event EventHandler<RefreshEvent> refreshEvent;
         public int turn { get; set; }
-        
 
         public Game(int width=7, int height=6)
         {
@@ -46,10 +45,6 @@ namespace Puissance4.Game_Engine
 
         public bool makeAMove(int x, int y)
         {
-            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
-                return false;
-            turn++;
-
             gravity(x, y);
             if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
                 return false;
@@ -69,10 +64,9 @@ namespace Puissance4.Game_Engine
 
         public bool gravity(int x,int y)
         {
-            Console.WriteLine("x: " + x + " y: " + y);
             while (plateau.isInArray(new Case(x, y + 1)))
             {
-                //Console.WriteLine("x2: " + x + " y2: " + y);
+                Console.WriteLine("P1 - X: " + x + " Y: " + y);
                 if (!plateau.estPlacable(plateau.recupererCase(x,y+1),turn%2))
                     return false;
                 //return false;
@@ -81,7 +75,6 @@ namespace Puissance4.Game_Engine
                 //return true;
             }
             return true;
-
         }
  
         public bool checkLine(int x, int y)
