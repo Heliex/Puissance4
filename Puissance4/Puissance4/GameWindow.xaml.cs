@@ -52,7 +52,6 @@ namespace Puissance4
                 else
                 {
                     //Afficher une pièce dans la grille
-                    
 
                 }
             if(game.checkLine(_column, _row))

@@ -121,19 +121,34 @@
     <Resource Include="Logo %282%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image1.png" />
+    <Resource Include="Images\Image1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="euro.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image2.png" />
+    <Resource Include="Images\Image2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image3.png" />
+    <Resource Include="Images\Image3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="wallhaven-141343.jpg" />
+    <Resource Include="Images\Grille.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Bouton1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Bouton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bouton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pionbleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pionrouge.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
