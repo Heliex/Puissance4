@@ -14,8 +14,8 @@ namespace Puissance4.Game_Engine
         private bool isYourTurn;
         private bool canPlay;
         private bool isLocalGame=true;
-        public event EventHandler<GameOverEvent> gameOverEvent;
-        public event EventHandler<RefreshEvent> refreshEvent;
+        public event EventHandler gameOverEvent;
+        public event EventHandler refreshEvent;
         public int turn { get; set; }
 
         public Game(int width=7, int height=6)
@@ -50,13 +50,13 @@ namespace Puissance4.Game_Engine
             turn++;
             
             if (checkLine(x, y))
-                onRaiseGameOverEvent(new GameOverEvent());
+                onRaiseGameOverEvent();
             
             IA.makeAMove();
             turn++;
             
             if (checkLine(x, y))
-                onRaiseGameOverEvent(new GameOverEvent());
+                onRaiseGameOverEvent();
 
             //isYourTurn = false;
             //canPlay = false;
@@ -96,17 +96,19 @@ namespace Puissance4.Game_Engine
             
         }
 
-        protected virtual void onRaiseGameOverEvent (GameOverEvent e)
+        public void refresh()
         {
-            EventHandler<GameOverEvent> handler = gameOverEvent;
 
-            if (handler != null) handler(this,e);
+        }
+
+        protected virtual void onRaiseGameOverEvent ()
+        {
+            if (gameOverEvent != null) gameOverEvent(this,EventArgs.Empty);
         }
 
         protected virtual void onRaiseRefreshEvent(RefreshEvent e)
         {
-            EventHandler<RefreshEvent> handler = refreshEvent;
-            if (handler != null) handler(this, e);
+            if (refreshEvent != null) refreshEvent(this, EventArgs.Empty);
         }
     }
 }

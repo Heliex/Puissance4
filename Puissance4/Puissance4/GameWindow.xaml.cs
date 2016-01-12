@@ -21,6 +21,7 @@ namespace Puissance4
     public partial class GameWindow : Window
     {
         public Game game;
+        public static bool rafraichir = false;
 
         public GameWindow()
         {
@@ -32,6 +33,8 @@ namespace Puissance4
         {
             game = new Game();
             game.init();
+            game.gameOverEvent += GameOver;
+            game.refreshEvent += refresh;
         }
 
 
@@ -57,9 +60,19 @@ namespace Puissance4
                 }       
         }
 
-        static void c_ThresholdReached(object sender, EventArgs e)
+        public void rafraichirTableau()
+        {
+            game.refresh();
+        }
+
+        static void GameOver(object sender, EventArgs e)
         {
             MessageBox.Show(string.Format("Gagné!"));
+        }
+
+        static void refresh(object sender, EventArgs e)
+        {
+            rafraichir = true;
         }
     }
 }
