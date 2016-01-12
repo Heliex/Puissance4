@@ -368,8 +368,8 @@ namespace Puissance4.Game_Engine
 
         public bool isInArray(Case c)
         {
-            if (c.x >= gameboard.GetLength(0) && c.x < 0) return false;
-            if (c.y >= gameboard.GetLength(1) && c.y < 0) return false;
+            if (c.x >= gameboard.GetLength(0) || c.x < 0) return false;
+            if (c.y >= gameboard.GetLength(1) || c.y < 0) return false;
 
             return true;
         }

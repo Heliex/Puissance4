@@ -54,10 +54,12 @@ namespace Puissance4
                     //Afficher une pièce dans la grille
                     
 
-                }
-            if(game.checkLine(_column, _row))
-                MessageBox.Show(string.Format("Gagné!"));
+                }       
+        }
 
+        static void c_ThresholdReached(object sender, EventArgs e)
+        {
+            MessageBox.Show(string.Format("Gagné!"));
         }
     }
 }
