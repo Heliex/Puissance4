@@ -6,16 +6,15 @@ namespace Puissance4Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Boards
+    public class Board
     {
-        public int Id { get; set; }
+        [Key, ForeignKey("Game")]
+        public int Game_ID { get; set; }
 
         public string Content { get; set; }
 
         public DateTimeOffset Date { get; set; }
 
-        public int? IdGame_Id { get; set; }
-
-        public virtual Games Games { get; set; }
+        public virtual Game Game { get; set; }
     }
 }

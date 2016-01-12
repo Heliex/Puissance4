@@ -6,9 +6,10 @@ namespace Puissance4Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Stats
+    public partial class Stat
     {
-        public string Id { get; set; }
+        [Key]
+        public int ID { get; set; }
 
         public int Turn { get; set; }
 
@@ -22,8 +23,8 @@ namespace Puissance4Model
         [StringLength(128)]
         public string Pwin_Id { get; set; }
 
-        public virtual IdentityUsers IdentityUsers { get; set; }
+        public virtual User User1 { get; set; }
 
-        public virtual IdentityUsers IdentityUsers1 { get; set; }
+        public virtual User Users2 { get; set; }
     }
 }
