@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Puissance4.Game_Engine
+﻿namespace Puissance4.Game_Engine
 {
-    class Case
+    public class Case
     {
         public int x { get; set; }
         public int y { get; set; }

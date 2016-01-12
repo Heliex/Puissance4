@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
     public class Game
     {
-        private static int NB_CASE_WIDTH = 7;
-        private static int NB_CASE_HEIGHT = 6;
-        private Board plateau;
+        public static int NB_CASE_WIDTH = 7;
+        public static int NB_CASE_HEIGHT = 6;
+        private IA IA;
+        public Board plateau
+        {
+            get; set;
+        }
         private bool isYourTurn;
         private bool canPlay;
         private bool isLocalGame=true;
@@ -33,6 +33,7 @@ namespace Puissance4.Game_Engine
             {
                 isYourTurn = true;
                 canPlay = true;
+                IA = new IA(this, 0);
             }
             else
             {
@@ -47,9 +48,9 @@ namespace Puissance4.Game_Engine
         {
             if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
                 return false;
-            
             turn++;
-            
+            IA.makeAMove();
+            turn++;
             //isYourTurn = false;
             //canPlay = false;
             return true;

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
-    class Board
+    public class Board
     {
         private Case[,] gameboard;
         private static readonly bool DiagonaleHGVersBD              = false;
