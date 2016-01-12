@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
-    class Board
+    public class Board
     {
         private Case[,] gameboard;
-        private static readonly bool DiagonaleHGVersBD              = false;
-        private static readonly bool DiagonaleBDVersHG              = true;
-        private static readonly bool DiagonaleBGVersHD              = false;
-        private static readonly bool DiagonaleHDVersBG              = true;
-        private static readonly bool DroiteVerticaleVersHaut        = false;
-        private static readonly bool DroiteVerticaleVersBas         = true;
-        private static readonly bool DroiteHorizontaleVersDroite    = false;
-        private static readonly bool DroiteHorizontaleVersGauche    = true;
+        //private static readonly bool DiagonaleHGVersBD              = false;
+        //private static readonly bool DiagonaleBDVersHG              = true;
+        //private static readonly bool DiagonaleBGVersHD              = false;
+        //private static readonly bool DiagonaleHDVersBG              = true;
+        //private static readonly bool DroiteVerticaleVersHaut        = false;
+        //private static readonly bool DroiteVerticaleVersBas         = true;
+        //private static readonly bool DroiteHorizontaleVersDroite    = false;
+        //private static readonly bool DroiteHorizontaleVersGauche    = true;
 
         private int noPlaceLeft;
 
@@ -371,8 +368,8 @@ namespace Puissance4.Game_Engine
 
         public bool isInArray(Case c)
         {
-            if (c.x >= gameboard.GetLength(0) && c.x < 0) return false;
-            if (c.y >= gameboard.GetLength(1) && c.y < 0) return false;
+            if (c.x >= gameboard.GetLength(0) || c.x < 0) return false;
+            if (c.y >= gameboard.GetLength(1) || c.y < 0) return false;
 
             return true;
         }
@@ -390,6 +387,11 @@ namespace Puissance4.Game_Engine
             }
 
             return true;
+        }
+
+        public void viderCase(int x, int y)
+        {
+            gameboard[x, y] = new Case(x, y);
         }
 
         public String toString()
