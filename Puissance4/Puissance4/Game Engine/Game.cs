@@ -48,6 +48,7 @@ namespace Puissance4.Game_Engine
             gravity(x, y);
             if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
                 return false;
+<<<<<<< HEAD
 
             turn++;
             if (checkLine(x, y))
@@ -57,6 +58,11 @@ namespace Puissance4.Game_Engine
             if (checkLine(x, y))
                 onRaiseGameOverEvent(new GameOverEvent());
 
+=======
+            turn++;
+            IA.makeAMove();
+            turn++;
+>>>>>>> master
             //isYourTurn = false;
             //canPlay = false;
             return true;
