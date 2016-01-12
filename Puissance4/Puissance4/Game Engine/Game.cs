@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
     public class Game
     {
-        private static int NB_CASE_WIDTH = 7;
-        private static int NB_CASE_HEIGHT = 6;
-        private Board plateau;
+        public static int NB_CASE_WIDTH = 7;
+        public static int NB_CASE_HEIGHT = 6;
+        private IA IA;
+        public Board plateau
+        {
+            get; set;
+        }
         private bool isYourTurn;
         private bool canPlay;
         private bool isLocalGame=true;
@@ -33,6 +33,7 @@ namespace Puissance4.Game_Engine
             {
                 isYourTurn = true;
                 canPlay = true;
+                IA = new IA(this, 0);
             }
             else
             {
@@ -47,14 +48,42 @@ namespace Puissance4.Game_Engine
         {
             if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
                 return false;
-            
             turn++;
-            
+
+            gravity(x, y);
+            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
+                return false;
+
+            turn++;
+            if (checkLine(x, y))
+                onRaiseGameOverEvent(new GameOverEvent());
+            IA.makeAMove();
+            turn++;
+            if (checkLine(x, y))
+                onRaiseGameOverEvent(new GameOverEvent());
+
             //isYourTurn = false;
             //canPlay = false;
             return true;
         }
 
+        public bool gravity(int x,int y)
+        {
+            Console.WriteLine("x: " + x + " y: " + y);
+            while (plateau.isInArray(new Case(x, y + 1)))
+            {
+                //Console.WriteLine("x2: " + x + " y2: " + y);
+                if (!plateau.estPlacable(plateau.recupererCase(x,y+1),turn%2))
+                    return false;
+                //return false;
+                plateau.viderCase(x, y);
+                y++;
+                //return true;
+            }
+            return true;
+
+        }
+ 
         public bool checkLine(int x, int y)
         {
             if (plateau.verifierLigne(plateau.recupererCase(x,y)))

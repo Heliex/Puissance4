@@ -164,7 +164,7 @@ namespace Puissance4_FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Status = "Déconnecté" };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email }; //Status = "Déconnecté" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
