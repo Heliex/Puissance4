@@ -58,6 +58,13 @@ namespace Puissance4_FrontEnd.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UnRegisterViewModel
+    {
+        [Required]
+        [Display(Name = "Préciser la raison")]
+        public string Raison { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]

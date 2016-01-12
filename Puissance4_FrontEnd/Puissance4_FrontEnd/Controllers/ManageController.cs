@@ -243,6 +243,37 @@ namespace Puissance4_FrontEnd.Controllers
         }
 
         //
+        // GET: /Manage/ChangePassword
+        public ActionResult Unregister()
+        {
+            return View();
+        }
+/*
+        //
+        // POST: /Manage/ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Unregister(UnRegisterViewModel model)
+        {
+            String userid = User.Identity.GetUserId();
+
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            using (var context = new ApplicationDbContext())
+            {
+                var compte = context.Users.Find(userid);
+
+                if (compte != null)
+                {
+                    compte.Status = "Désactivé";
+                    //applique les changements
+                    context.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }*/
+        //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {

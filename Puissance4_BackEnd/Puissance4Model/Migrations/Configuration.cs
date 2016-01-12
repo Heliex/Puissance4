@@ -1,18 +1,18 @@
-namespace Puissance4_FrontEnd.Migrations
+namespace Puissance4Model.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Puissance4_FrontEnd.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Puissance4Model.Model>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Puissance4_FrontEnd.Models.ApplicationDbContext context)
+        protected override void Seed(Puissance4Model.Model context)
         {
             //  This method will be called after migrating to the latest version.
 

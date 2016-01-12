@@ -10,7 +10,7 @@ namespace Puissance4_FrontEnd.Models
     // Vous pouvez ajouter des données de profil pour l'utilisateur en ajoutant plus de propriétés à votre classe ApplicationUser ; consultez http://go.microsoft.com/fwlink/?LinkID=317594 pour en savoir davantage.
     public class ApplicationUser : IdentityUser
     {
-        public string Status { get; set; }
+        //public string Status { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -28,11 +28,11 @@ namespace Puissance4_FrontEnd.Models
         {
         }
 
-        public DbSet<Stats> Stats { get; set; }
+        //public DbSet<Stats> Stats { get; set; }
 
-        public DbSet<Board> Boards { get; set; }
+        //public DbSet<Board> Boards { get; set; }
 
-        public DbSet<Game> Games { get; set; }
+        //public DbSet<Game> Games { get; set; }
 
         public static ApplicationDbContext Create()
         {
