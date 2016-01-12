@@ -24,24 +24,22 @@ namespace Puissance4.Game_Engine
             int y = r.Next(Game.NB_CASE_HEIGHT);
 
             gravity(x, y);
-            if (!game.plateau.estPlacable(game.plateau.recupererCase(x, y), game.turn))
-            {
-                //Console.WriteLine("Jeton non plaçable, nouvel essai de l'IA");
-                makeAMove();
-            }
+            
         }
 
         public bool gravity(int x, int y)
         {
             while (game.plateau.isInArray(new Case(x, y + 1)))
             {
-                Console.WriteLine("IA - X: " + x + " Y: " + y);
-                if (!game.plateau.estPlacable(game.plateau.recupererCase(x, y + 1), game.turn % 2))
-                    return false;
-                //return false;
-                game.plateau.viderCase(x, y);
+                if (!game.plateau.recupererCase(x,y+1).isEmpty())
+                    break;
                 y++;
-                //return true;
+            }
+            Console.WriteLine("IA - X: " + x + " Y: " + y);
+            if (!game.plateau.estPlacable(game.plateau.recupererCase(x, y), game.turn))
+            {
+                //Console.WriteLine("Jeton non plaçable, nouvel essai de l'IA");
+                makeAMove();
             }
             return true;
         }

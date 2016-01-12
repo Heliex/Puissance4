@@ -6,14 +6,14 @@ namespace Puissance4.Game_Engine
     public class Board
     {
         private Case[,] gameboard;
-        private static readonly bool DiagonaleHGVersBD              = false;
-        private static readonly bool DiagonaleBDVersHG              = true;
-        private static readonly bool DiagonaleBGVersHD              = false;
-        private static readonly bool DiagonaleHDVersBG              = true;
-        private static readonly bool DroiteVerticaleVersHaut        = false;
-        private static readonly bool DroiteVerticaleVersBas         = true;
-        private static readonly bool DroiteHorizontaleVersDroite    = false;
-        private static readonly bool DroiteHorizontaleVersGauche    = true;
+        //private static readonly bool DiagonaleHGVersBD              = false;
+        //private static readonly bool DiagonaleBDVersHG              = true;
+        //private static readonly bool DiagonaleBGVersHD              = false;
+        //private static readonly bool DiagonaleHDVersBG              = true;
+        //private static readonly bool DroiteVerticaleVersHaut        = false;
+        //private static readonly bool DroiteVerticaleVersBas         = true;
+        //private static readonly bool DroiteHorizontaleVersDroite    = false;
+        //private static readonly bool DroiteHorizontaleVersGauche    = true;
 
         private int noPlaceLeft;
 

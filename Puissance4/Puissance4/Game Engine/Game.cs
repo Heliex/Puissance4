@@ -45,8 +45,7 @@ namespace Puissance4.Game_Engine
 
         public bool makeAMove(int x, int y)
         {
-            gravity(x, y);
-            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
+            if (!gravity(x, y))
                 return false;
             turn++;
             
@@ -68,14 +67,13 @@ namespace Puissance4.Game_Engine
         {
             while (plateau.isInArray(new Case(x, y + 1)))
             {
-                Console.WriteLine("P1 - X: " + x + " Y: " + y);
-                if (!plateau.estPlacable(plateau.recupererCase(x,y+1),turn%2))
-                    return false;
-                //return false;
-                plateau.viderCase(x, y);
+                if (!plateau.recupererCase(x, y+1).isEmpty())
+                    break;
                 y++;
-                //return true;
             }
+            Console.WriteLine("P1 - X: " + x + " Y: " + y);
+            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn % 2))
+                return false;
             return true;
         }
  
