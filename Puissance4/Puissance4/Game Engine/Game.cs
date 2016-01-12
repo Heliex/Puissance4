@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
     public class Game
     {
-        private static int NB_CASE_WIDTH = 7;
-        private static int NB_CASE_HEIGHT = 6;
-        private Board plateau;
+        public static int NB_CASE_WIDTH = 7;
+        public static int NB_CASE_HEIGHT = 6;
+        private IA IA;
+        public Board plateau
+        {
+            get; set;
+        }
         private bool isYourTurn;
         private bool canPlay;
         private bool isLocalGame=true;
-        public event EventHandler<GameOverEvent> gameOverEvent;
-        public event EventHandler<RefreshEvent> refreshEvent;
+        public event EventHandler gameOverEvent;
+        public event EventHandler refreshEvent;
         public int turn { get; set; }
-        
 
         public Game(int width=7, int height=6)
         {
@@ -33,6 +32,7 @@ namespace Puissance4.Game_Engine
             {
                 isYourTurn = true;
                 canPlay = true;
+                IA = new IA(this, 0);
             }
             else
             {
@@ -45,16 +45,38 @@ namespace Puissance4.Game_Engine
 
         public bool makeAMove(int x, int y)
         {
-            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn%2))
+            if (!gravity(x, y))
                 return false;
-            
             turn++;
             
+            if (checkLine(x, y))
+                onRaiseGameOverEvent();
+            
+            IA.makeAMove();
+            turn++;
+            
+            if (checkLine(x, y))
+                onRaiseGameOverEvent();
+
             //isYourTurn = false;
             //canPlay = false;
             return true;
         }
 
+        public bool gravity(int x,int y)
+        {
+            while (plateau.isInArray(new Case(x, y + 1)))
+            {
+                if (!plateau.recupererCase(x, y+1).isEmpty())
+                    break;
+                y++;
+            }
+            Console.WriteLine("P1 - X: " + x + " Y: " + y);
+            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn % 2))
+                return false;
+            return true;
+        }
+ 
         public bool checkLine(int x, int y)
         {
             if (plateau.verifierLigne(plateau.recupererCase(x,y)))
@@ -74,17 +96,19 @@ namespace Puissance4.Game_Engine
             
         }
 
-        protected virtual void onRaiseGameOverEvent (GameOverEvent e)
+        public void refresh()
         {
-            EventHandler<GameOverEvent> handler = gameOverEvent;
 
-            if (handler != null) handler(this,e);
+        }
+
+        protected virtual void onRaiseGameOverEvent ()
+        {
+            if (gameOverEvent != null) gameOverEvent(this,EventArgs.Empty);
         }
 
         protected virtual void onRaiseRefreshEvent(RefreshEvent e)
         {
-            EventHandler<RefreshEvent> handler = refreshEvent;
-            if (handler != null) handler(this, e);
+            if (refreshEvent != null) refreshEvent(this, EventArgs.Empty);
         }
     }
 }

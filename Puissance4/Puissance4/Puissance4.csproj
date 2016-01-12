@@ -78,6 +78,7 @@
     <Compile Include="Game Engine\Case.cs" />
     <Compile Include="Game Engine\Game.cs" />
     <Compile Include="Game Engine\GameOverEvent.cs" />
+    <Compile Include="Game Engine\IA.cs" />
     <Compile Include="Game Engine\RefreshEvent.cs" />
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
