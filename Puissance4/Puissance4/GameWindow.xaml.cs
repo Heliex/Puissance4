@@ -40,10 +40,9 @@ namespace Puissance4
 
         private void GameClick(object sender, RoutedEventArgs e)
         {
-            Button _btn = sender as Button;
-
-            int _column = (int)_btn.GetValue(Grid.ColumnProperty); //x
-            int _row = (int)_btn.GetValue(Grid.RowProperty); //y
+            Ellipse _elp = sender as Ellipse;
+            int _column = (int)_elp.GetValue(Grid.ColumnProperty); //x
+            int _row = (int)_elp.GetValue(Grid.RowProperty); //y
             //MessageBox.Show(string.Format("Button clicked at column {0}, row {1}", _column, _row));
 
             if (game != null)
@@ -55,7 +54,14 @@ namespace Puissance4
                 else
                 {
                     //Afficher une pièce dans la grille
-
+                    
+                    Ellipse elipse = new Ellipse();
+                    elipse.Height = 100;
+                    elipse.Width = 100;
+                    elipse.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF4374FF"));
+                    Grid.SetRow(elipse, _row);
+                    Grid.SetColumn(elipse, _column);
+                    GridGame.Children.Add(elipse);
                 }       
         }
 
