@@ -51,18 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetUsers.cs" />
-    <Compile Include="Boards.cs" />
-    <Compile Include="Games.cs" />
-    <Compile Include="IdentityUsers.cs" />
-    <Compile Include="Migrations\201601120807398_Initial.cs" />
-    <Compile Include="Migrations\201601120807398_Initial.Designer.cs">
-      <DependentUpon>201601120807398_Initial.cs</DependentUpon>
+    <Compile Include="Board.cs" />
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Migrations\201601121556197_initial.cs" />
+    <Compile Include="Migrations\201601121556197_initial.Designer.cs">
+      <DependentUpon>201601121556197_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stats.cs" />
+    <Compile Include="Stat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -71,8 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601120807398_Initial.resx">
-      <DependentUpon>201601120807398_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601121556197_initial.resx">
+      <DependentUpon>201601121556197_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
