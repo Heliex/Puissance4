@@ -43,38 +43,31 @@ namespace Puissance4.Game_Engine
             }
         }
 
-        public bool makeAMove(int x, int y)
+        public int[] makeAMove(int x, int y)
         {
-            if (!gravity(x, y))
-                return false;
+            int[] coordonnees = gravity(x, y);
+            if (coordonnees[0] == -1)
+                return coordonnees;
             turn++;
-            
-            if (checkLine(x, y))
-                onRaiseGameOverEvent();
-            
-            IA.makeAMove();
-            turn++;
-            
-            if (checkLine(x, y))
+
+            if (checkLine(coordonnees[0], coordonnees[1]))
                 onRaiseGameOverEvent();
 
             //isYourTurn = false;
             //canPlay = false;
-            return true;
+            return coordonnees;
         }
 
-        public bool gravity(int x,int y)
+        public int[] gravity(int x,int y)
         {
-            while (plateau.isInArray(new Case(x, y + 1)))
+            while (plateau.isInArray(plateau.recupererCase(x, y + 1)))
             {
                 if (!plateau.recupererCase(x, y+1).isEmpty())
                     break;
                 y++;
             }
-            Console.WriteLine("P1 - X: " + x + " Y: " + y);
-            if (!plateau.estPlacable(plateau.recupererCase(x, y), turn % 2))
-                return false;
-            return true;
+            //Console.WriteLine("P1 - X: " + x + " Y: " + y);
+            return plateau.estPlacable(plateau.recupererCase(x, y), turn % 2);
         }
  
         public bool checkLine(int x, int y)
@@ -104,6 +97,7 @@ namespace Puissance4.Game_Engine
         protected virtual void onRaiseGameOverEvent ()
         {
             if (gameOverEvent != null) gameOverEvent(this,EventArgs.Empty);
+            Console.WriteLine("Partie terminée !");
         }
 
         protected virtual void onRaiseRefreshEvent(RefreshEvent e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Puissance4.Game_Engine
 {
-    class IA
+    public class IA
     {
         private Game game;
         private int level;
@@ -17,17 +17,23 @@ namespace Puissance4.Game_Engine
             this.level = level;
         }
 
-        public void makeAMove()
+        public int[] makeAMove()
         {
             Random r = new Random();
-            int x = r.Next(Game.NB_CASE_WIDTH);
-            int y = r.Next(Game.NB_CASE_HEIGHT);
+            int[] xy = { r.Next(Game.NB_CASE_WIDTH), r.Next(Game.NB_CASE_HEIGHT)};
 
-            gravity(x, y);
+            //xy = game.gravity(xy[0], xy[0]);
             
+            xy = game.makeAMove(xy[0], xy[1]);
+            while (xy[0] == -1)
+            {
+                xy = game.makeAMove(r.Next(Game.NB_CASE_WIDTH), r.Next(Game.NB_CASE_HEIGHT));
+            }
+
+            return xy;
         }
 
-        public bool gravity(int x, int y)
+        public int[] gravity(int x, int y)
         {
             while (game.plateau.isInArray(new Case(x, y + 1)))
             {
@@ -35,13 +41,14 @@ namespace Puissance4.Game_Engine
                     break;
                 y++;
             }
-            Console.WriteLine("IA - X: " + x + " Y: " + y);
-            if (!game.plateau.estPlacable(game.plateau.recupererCase(x, y), game.turn))
+            //Console.WriteLine("IA - X: " + x + " Y: " + y);
+            if (game.plateau.estPlacable(game.plateau.recupererCase(x, y), game.turn)[0] == -1)
             {
                 //Console.WriteLine("Jeton non plaçable, nouvel essai de l'IA");
                 makeAMove();
             }
-            return true;
+
+            return new int[] { x, y };
         }
     }
 }

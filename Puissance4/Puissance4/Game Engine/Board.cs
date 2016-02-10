@@ -219,7 +219,7 @@ namespace Puissance4.Game_Engine
                 } catch (IndexOutOfRangeException) {
                     return false;
                 }
-                Console.WriteLine(c.x + " " + caseOriginale.x + " " + (c.x - (caseOriginale.x - c.x)) + " " + c.y + " " + caseOriginale.y + " " + (c.y - (caseOriginale.y - c.y))+"   "+countDiagonaleLine);
+                //Console.WriteLine(c.x + " " + caseOriginale.x + " " + (c.x - (caseOriginale.x - c.x)) + " " + c.y + " " + caseOriginale.y + " " + (c.y - (caseOriginale.y - c.y))+"   "+countDiagonaleLine);
                 ligneDiagonale(newCase, c);
             }
 
@@ -374,19 +374,24 @@ namespace Puissance4.Game_Engine
             return true;
         }
 
-        public bool estPlacable(Case c, int isPlayerTurn)
+        public int[] estPlacable(Case c, int isPlayerTurn)
         {
-            if (!isInArray(c)) return false;
-            if (!c.isEmpty() || !gameboard[c.x, c.y].isEmpty()) return false;
+            int[] coordonnees = { -1, -1 };
 
-            if (noPlaceLeft-- <= 0) return false;
+            if (!isInArray(c)) return coordonnees;
+            if (!c.isEmpty() || !gameboard[c.x, c.y].isEmpty()) return coordonnees;
+
+            if (noPlaceLeft-- <= 0) return coordonnees;
             if (!c.placePiece(isPlayerTurn == 0 ? false : true))
             {
                 noPlaceLeft++;  //En cas de problème, on annule le coup précédent
-                return false;
+                return coordonnees;
             }
 
-            return true;
+            coordonnees[0] = c.x;
+            coordonnees[1] = c.y;
+
+            return coordonnees;
         }
 
         public void viderCase(int x, int y)
