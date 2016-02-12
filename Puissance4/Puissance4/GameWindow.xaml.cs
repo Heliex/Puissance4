@@ -20,7 +20,7 @@ namespace Puissance4
     /// </summary>
     public partial class GameWindow : Window
     {
-        public Game game;
+        public static Game game;
         public static bool rafraichir = false;
         public IA GameAI;
         public int _column;
