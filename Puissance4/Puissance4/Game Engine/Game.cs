@@ -32,7 +32,7 @@ namespace Puissance4.Game_Engine
             {
                 isYourTurn = true;
                 canPlay = true;
-                IA = new IA(this, 0);
+                IA = new IA(this, 1);
             }
             else
             {

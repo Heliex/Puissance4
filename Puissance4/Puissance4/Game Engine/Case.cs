@@ -5,12 +5,14 @@
         public int x { get; set; }
         public int y { get; set; }
         public bool? color { get; set; }
+        public int poids { get; set; }
 
         public Case(int x, int y)
         {
             this.x = x;
             this.y = y;
             color = null;
+            this.poids = 5;
         }
 
         public bool isEmpty()

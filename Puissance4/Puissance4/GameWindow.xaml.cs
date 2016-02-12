@@ -38,7 +38,7 @@ namespace Puissance4
             game.init();
             game.gameOverEvent += GameOver;
             game.refreshEvent += refresh;
-            reglerIA(0);
+            reglerIA(1);
         }
 
         public void reglerIA(int lvl)
@@ -99,6 +99,7 @@ namespace Puissance4
 
         public void dessiner()
         {
+            Console.WriteLine("Y : " + _row + "  X : " + _column);
             Ellipse elipse = new Ellipse();
             elipse.Height = 100;
             elipse.Width = 100;
