@@ -207,7 +207,7 @@ namespace Puissance4.Game_Engine
         //}
 
 
-        public bool ligneDiagonale(Case c, Case caseOriginale)
+        private bool ligneDiagonale(Case c, Case caseOriginale)
         {
             if (!c.isEmpty() && c.isSameColor(caseOriginale))
             {
@@ -230,7 +230,7 @@ namespace Puissance4.Game_Engine
             return false;
         }
 
-        public bool ligneDroite(Case c, Case caseOriginale)
+        private bool ligneDroite(Case c, Case caseOriginale)
         {
             if (!c.isEmpty() && c.isSameColor(caseOriginale))
             {
@@ -394,7 +394,7 @@ namespace Puissance4.Game_Engine
             return coordonnees;
         }
 
-        public void viderCase(int x, int y)
+        private void viderCase(int x, int y)
         {
             gameboard[x, y] = new Case(x, y);
         }

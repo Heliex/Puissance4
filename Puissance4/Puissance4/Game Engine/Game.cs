@@ -86,7 +86,7 @@ namespace Puissance4.Game_Engine
 
         public void gameOver()
         {
-            
+            plateau.init();
         }
 
         public void refresh()
