@@ -12,7 +12,7 @@ namespace Puissance4.Game_Engine
             get; set;
         }
         private bool isYourTurn;
-        private bool canPlay;
+        public bool canPlay;
         private bool isLocalGame=true;
         public event EventHandler gameOverEvent;
         public event EventHandler refreshEvent;

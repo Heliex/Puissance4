@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Puissance4"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
-    <Grid>
+    <Grid Background="#FF00639C">
         <Label Content="Puissance 4" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Cooper Black"/>
         <Button Content="VS CPU" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="22" Click="Button_Click"/>
         <Button Content="STATS" HorizontalAlignment="Center" Margin="0,165,0,0" VerticalAlignment="Top" Width="300" Height="50" FontSize="22" Click="Button_Click_1"/>

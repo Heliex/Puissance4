@@ -119,12 +119,31 @@ namespace Puissance4
 
         static void GameOver(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Gagné!"));
+            if(game.turn%2 == 0)
+            {
+                MessageBox.Show(string.Format("Perdu!"));
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Gagné!"));
+            }
+
         }
 
         static void refresh(object sender, EventArgs e)
         {
             rafraichir = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int i = 0;
+            while (GridGame.Children.Count > 42)
+            {
+                GridGame.Children.RemoveAt(GridGame.Children.Count -1);
+
+            }
+            newGame();
         }
     }
 }
